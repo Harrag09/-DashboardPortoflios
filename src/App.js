@@ -41,6 +41,7 @@ import SignUp from "layouts/authentication/sign-up";
 // Icon Fonts
 import "assets/css/nucleo-icons.css";
 import "assets/css/nucleo-svg.css";
+import { useSelector } from "react-redux";
 
 export default function App() {
   const [controller, dispatch] = useArgonController();
@@ -49,7 +50,9 @@ export default function App() {
   const [onMouseEnter, setOnMouseEnter] = useState(false);
   const [rtlCache, setRtlCache] = useState(null);
   const { pathname } = useLocation();
-
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to track modal visibility
+  const modelOpen = useSelector((state) => state.modal.modelOpen); 
+  const disable = useSelector((state) => state.modal.disable); // Access the Redux state directly
   const isLoggedIn = !!localStorage.getItem("isLoggedIn");
   // Cache for the rtl
   useMemo(() => {
@@ -60,6 +63,7 @@ export default function App() {
 
     setRtlCache(cacheRtl);
   }, []);
+
 
   // Open sidenav when mouse enter on mini sidenav
   const handleOnMouseEnter = () => {
@@ -134,6 +138,7 @@ export default function App() {
         <CssBaseline />
         {layout === "Home" && (
           <>
+          {modelOpen ===false&&(
             <Sidenav
               color={sidenavColor}
               brand={darkSidenav || darkMode ? brand : brandDark}
@@ -142,6 +147,7 @@ export default function App() {
               onMouseEnter={handleOnMouseEnter}
               onMouseLeave={handleOnMouseLeave}
             />
+          )}
             <Configurator />
             {configsButton}
           </>
@@ -155,7 +161,7 @@ export default function App() {
   ) : (
     <ThemeProvider theme={darkMode ? themeDark : theme}>
       <CssBaseline />
-      {isLoggedIn && (
+      {isLoggedIn && modelOpen ===false&&(
         <>
           <Sidenav
             color={sidenavColor}
@@ -164,6 +170,7 @@ export default function App() {
             routes={routes}
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeave}
+            
           />
           <Configurator />
           {configsButton}

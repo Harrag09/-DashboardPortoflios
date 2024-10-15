@@ -23,14 +23,18 @@ import { ArgonControllerProvider } from "context";
 
 // react-perfect-scrollbar component
 import PerfectScrollbar from "react-perfect-scrollbar";
-
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 // react-perfect-scrollbar styles
 import "react-perfect-scrollbar/dist/css/styles.css";
-
+import { persistor,store } from "shared";
 const container = document.getElementById("root");
 const root = createRoot(container);
 
 root.render(
+  <Provider store={store}>
+    <PersistGate persistor={persistor}>
+
   <BrowserRouter>
     <ArgonControllerProvider>
       <PerfectScrollbar>
@@ -38,6 +42,8 @@ root.render(
       </PerfectScrollbar>
     </ArgonControllerProvider>
   </BrowserRouter>
+  </PersistGate>
+  </Provider>
 );
 
 
