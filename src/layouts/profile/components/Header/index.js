@@ -35,6 +35,7 @@ import breakpoints from "assets/theme/base/breakpoints";
 
 // Images
 import burceMars from "assets/images/bruce-mars.jpg";
+import { useSelector } from "react-redux";
 
 function Header() {
   const [tabsOrientation, setTabsOrientation] = useState("horizontal");
@@ -61,10 +62,15 @@ function Header() {
   }, [tabsOrientation]);
 
   const handleSetTabValue = (event, newValue) => setTabValue(newValue);
-
+  const modelOpen = useSelector((state) => state.modal.modelOpen); 
+  
   return (
+ 
     <ArgonBox position="relative">
-      <DashboardNavbar absolute light />
+
+
+      {modelOpen===false &&  <DashboardNavbar absolute light />}
+     
       <ArgonBox height="220px" />
       <Card
         sx={{
@@ -97,6 +103,7 @@ function Header() {
         </Grid>
       </Card>
     </ArgonBox>
+
   );
 }
 

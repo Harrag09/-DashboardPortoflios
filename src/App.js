@@ -41,7 +41,8 @@ import SignUp from "layouts/authentication/sign-up";
 // Icon Fonts
 import "assets/css/nucleo-icons.css";
 import "assets/css/nucleo-svg.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setModelStatus } from "shared/slice/Model/ModelSlice";
 
 export default function App() {
   const [controller, dispatch] = useArgonController();
@@ -50,9 +51,7 @@ export default function App() {
   const [onMouseEnter, setOnMouseEnter] = useState(false);
   const [rtlCache, setRtlCache] = useState(null);
   const { pathname } = useLocation();
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to track modal visibility
   const modelOpen = useSelector((state) => state.modal.modelOpen); 
-  const disable = useSelector((state) => state.modal.disable); // Access the Redux state directly
   const isLoggedIn = !!localStorage.getItem("isLoggedIn");
   // Cache for the rtl
   useMemo(() => {
@@ -63,7 +62,12 @@ export default function App() {
 
     setRtlCache(cacheRtl);
   }, []);
+  const dispatch4ds = useDispatch();
 
+  useEffect(() => {
+    dispatch4ds(setModelStatus({ modelOpen: false }));
+    
+  }, []);
 
   // Open sidenav when mouse enter on mini sidenav
   const handleOnMouseEnter = () => {
@@ -88,6 +92,7 @@ export default function App() {
   useEffect(() => {
     document.body.setAttribute("dir", direction);
   }, [direction]);
+
 
   // Setting page scroll to 0 when changing the route
   useEffect(() => {
@@ -142,7 +147,7 @@ export default function App() {
             <Sidenav
               color={sidenavColor}
               brand={darkSidenav || darkMode ? brand : brandDark}
-              brandName="ChikhAymen && Oussama"
+              brandName="ChikhAymen"
               routes={routes}
               onMouseEnter={handleOnMouseEnter}
               onMouseLeave={handleOnMouseLeave}
@@ -166,7 +171,7 @@ export default function App() {
           <Sidenav
             color={sidenavColor}
             brand={darkSidenav || darkMode ? brand : brandDark}
-            brandName="ChikhAymen && Oussama"
+            brandName="ChikhAymen"
             routes={routes}
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeave}

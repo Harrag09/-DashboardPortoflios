@@ -6,6 +6,8 @@ import Profile from "layouts/profile";
 import Home from "layouts/home";
 import Information from "layouts/information";
 import Account from "layouts/account";
+import Service from "layouts/service";
+import Files from "layouts/file";
 
 const routes = [
   { type: "title", title: "Profil", key: "Profil-pages" },
@@ -24,6 +26,24 @@ const routes = [
     route: "/Account",
     icon: <ArgonBox component="i" color="dark" fontSize="14px" className="ni ni-single-02" />,
     component: <Account />,
+  },
+  { type: "title", title: "Service", key: "Profil-pages" },
+  {
+    type: "route",
+    name: "Service",
+    key: "Service",
+    route: "/Service",
+    icon: <ArgonBox component="i" color="dark" fontSize="14px" className="ni ni-single-02" />,
+    component: <Service />,
+  },
+  { type: "title", title: "Files", key: "Profil-pages" },
+  {
+    type: "route",
+    name: "Files",
+    key: "Files",
+    route: "/Files",
+    icon: <ArgonBox component="i" color="dark" fontSize="14px" className="ni ni-single-02" />,
+    component: <Files />,
   },
   { type: "title", title: "Votre Information", key: "Information-pages" },
   {

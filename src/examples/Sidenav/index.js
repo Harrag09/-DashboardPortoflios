@@ -158,7 +158,17 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
         </ArgonBox>
       </ArgonBox>
       <Divider light={darkSidenav} />
-      <List>{renderRoutes}</List>
+      <List 
+       sx={{
+        overflowY: 'auto', // Enable scrolling
+        height: 'calc(100vh - 120px)', // Adjust height to fit within the viewport (you can customize this)
+        '&::-webkit-scrollbar': {
+          display: 'none', // Hide scrollbar in Webkit browsers
+        },
+        scrollbarWidth: 'none', // For Firefox
+        msOverflowStyle: 'none', // For Internet Explorer
+      }}
+      >{renderRoutes}</List>
    
       <ArgonBox pt={1} mt="auto" mb={6} mx={5}>
        <buttonn    onClick={handleLogout}> ↪ Legout</buttonn>

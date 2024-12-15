@@ -52,11 +52,16 @@ import team3 from "assets/images/team-3.jpg";
 import team4 from "assets/images/team-4.jpg";
 import InformationPersonnal from "./data/informationPersonnal";
 import AboutMe from "./data/aboutMe";
+import Marwan from "./data/marwan";
+import Domaine from "./data/domaine";
+import Credentials from "./data/Credentials";
+import Availability from "./data/availability";
 const bgImage =
   "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/profile-layout-header.jpg";
 
 function Account() {
   return (
+    // <Marwan/>
     <DashboardLayout
       sx={{
         backgroundImage: ({ functions: { rgba, linearGradient }, palette: { gradients } }) =>
@@ -77,6 +82,15 @@ function Account() {
        <AboutMe/>
           </Grid>
           <Grid item xs={12} md={6} xl={4}>
+       <Domaine/>
+          </Grid>
+          <Grid item xs={12} md={6} xl={6}>
+       <Credentials/>
+          </Grid>
+          <Grid item xs={12} md={6} xl={6}>
+       <Availability/>
+          </Grid>
+          {/* <Grid item xs={12} md={6} xl={4}>
             <ProfileInfoCard
               title="Account Personal"
               description="Hi, I'm Alec Thompson, Decisions: If you can't decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality)."
@@ -105,11 +119,11 @@ function Account() {
               ]}
               action={{ route: "", tooltip: "Edit Profile" }}
             />
-          </Grid>
+          </Grid> */}
           
         </Grid>
       </ArgonBox>
-      <ArgonBox mb={3}>
+      {/* <ArgonBox mb={3}>
         <Card>
           <ArgonBox pt={2} px={2}>
             <ArgonBox mb={0.5}>
@@ -186,12 +200,53 @@ function Account() {
                 />
               </Grid>
               <Grid item xs={12} md={6} xl={3}>
-                <PlaceholderCard title={{ variant: "h5", text: "New project" }} outlined />
+                <DefaultProjectCard
+                  image={homeDecor3}
+                  label="project #3"
+                  title="minimalist"
+                  description="Different people have different taste, and various types of music."
+                  action={{
+                    type: "internal",
+                    route: "/pages/profile/profile-overview",
+                    color: "info",
+                    label: "View Project",
+                  }}
+                  authors={[
+                    { image: team4, name: "Peterson" },
+                    { image: team3, name: "Nick Daniel" },
+                    { image: team2, name: "Ryan Milly" },
+                    { image: team1, name: "Elena Morison" },
+                  ]}
+                />
+              </Grid>
+              <Grid item xs={12} md={6} xl={3}>
+                <DefaultProjectCard
+                  image={homeDecor3}
+                  label="project #3"
+                  title="minimalist"
+                  description="Different people have different taste, and various types of music."
+                  action={{
+                    type: "internal",
+                    route: "/pages/profile/profile-overview",
+                    color: "info",
+                    label: "View Project",
+                  }}
+                  authors={[
+                    { image: team4, name: "Peterson" },
+                    { image: team3, name: "Nick Daniel" },
+                    { image: team2, name: "Ryan Milly" },
+                    { image: team1, name: "Elena Morison" },
+                  ]}
+                />
+              </Grid>
+              
+              <Grid item xs={12} md={6} xl={3}>
+                <PlaceholderCard title={{ variant: "h5", text: "New Serivce" }} outlined />
               </Grid>
             </Grid>
           </ArgonBox>
-        </Card>
-      </ArgonBox>
+        </Card> */}
+      {/* </ArgonBox> */}
 
       <Footer />
     </DashboardLayout>
